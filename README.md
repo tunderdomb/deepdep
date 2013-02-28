@@ -13,11 +13,21 @@ async everything in order you required them.
 With deepdep, you can build applications intuitively like in any environment that
 supports native source inclusion.
 
+## How to install?
+
+deepdep is available as an npm package
+
+    npm install deepdep
+
+but you can just download it, drop it in your project and use it
+you can also overwrite the host object at the very end of the deepdep.json,
+or put it in a closure where `this` points to your module
+
 ## How does this work, then?
 
 **Important Note:**
 deepdep bundles includes, and you can execute a bundle by calling `.loaded()`
-you have to call `.loaded()` if you want your scripts to be loaded
+you have to call `.loaded()` if you want your scripts to be loaded, but you can do without arguments
 
 `.loaded()` returns the deepdep function, so you can start with a new loading session
 right away
