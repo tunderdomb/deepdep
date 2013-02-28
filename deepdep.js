@@ -29,6 +29,7 @@
       scripts[src] = 2
       notifyBundle()
       notifyWaitingLine()
+      // should I clean this mess up?
       //        head.removeChild(script)
     }
     script.async = 1
@@ -57,6 +58,14 @@
     return ns
   }
 
+  /**
+   * base method, doesn't really looks good in action but useable
+   * @param includes {Array}
+   * @param includePath {string}
+   * @param watchedGlobals {Array}
+   * @param loaded {function}
+   * @return {Dep}
+   */
   function deepdep( includes, includePath, watchedGlobals, loaded ){
     var dep = new Dep(includes)
     if ( loaded ) {
