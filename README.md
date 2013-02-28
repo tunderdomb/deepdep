@@ -36,7 +36,7 @@ or bundle includes
         // .. all of them loaded and executed
       })
 
-this comes in handy when you want to tell the loader where to loade `.from()`
+this comes in handy when you want to tell the loader where to loaed `.from()`
 this way you can set an include path for that bundle
 
 
@@ -50,7 +50,11 @@ this way you can set an include path for that bundle
 and here comes the fun part
 you can `.watch()` namespaces whether they are defined yet or not
 and this will prevent the execution of the loader script if not all of them are defined
+
 watched namespaces will be added to the loaders argument list so you can reference them
+
+but this only works if those scripts really do create that namespace, otherwise the loader will
+never execute
 
 you don't have to write window, but it's the default namespace root as of now
 
@@ -90,3 +94,5 @@ and this, is namespacing:
 
 so if you are concerned if setting a global value will result in not getting a gift from Santa,
 I can assure you you can still be a good boy and use globals in javascript.
+
+Just be sure you use them what they are for.
