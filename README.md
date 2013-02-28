@@ -78,6 +78,7 @@ you don't have to write window, but it's the default namespace root as of now
       .loaded(function( some, other, thatOne ){
         // some.js defined window.some
         // other.js defined window.other
+        // that-one.js defined window.thatOne
       })
 
 
