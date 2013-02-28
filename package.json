@@ -1,0 +1,11 @@
+{
+  "name": "deepdep",
+  "version": "1.0.0",
+  "description": "deeply depending js sript loader",
+  "keywords": ["script loader", "dependency loader"],
+  "author": "Zoltan Nagy <tunderdomb@gmail.com> (https://github.com/tunderdomb)",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/tunderdomb/deepdep.git"
+  }
+}
