@@ -29,9 +29,6 @@ or put it in a closure where `this` points to your module
 deepdep bundles includes, and you can execute a bundle by calling `.loaded()`
 you have to call `.loaded()` if you want your scripts to be loaded, but you can do without arguments
 
-`.loaded()` returns the deepdep function, so you can start with a new loading session
-right away
-
 the api is very simple
 
 you can `.include()` scripts like so
@@ -78,8 +75,25 @@ you don't have to write window, but it's the default namespace root as of now
       .include("some.js", "/other.js", "../that-one.js")
       .from("that/dir")
       .watch("window.some", "other", "thatOne")
-      .loaded(function( some, other, thatOne){
-        // .. all of them loaded and executed
+      .loaded(function( some, other, thatOne ){
+        // some.js defined window.some
+        // other.js defined window.other
+      })
+
+
+`.loaded()` returns the deepdep function, so you can start with a new loading session
+right away
+
+    deepdep
+      .include("some.js", "bundled.js").from("here").watch("some")
+      .loaded(function( some ){
+        // window.some available and bundle js loaded and even its dependencies
+      })
+
+      .include("new-loading-session.js")
+      .loaded(function(){
+        // now this will execute if the above include loaded
+        // separately from the previous loaded call
       })
 
 ## The catch
