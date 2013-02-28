@@ -37,7 +37,7 @@ or bundle includes
       })
 
 this comes in handy when you want to tell the loader where to loade `.from()`
-this way you can set an inclue path for that bundle
+this way you can set an include path for that bundle
 
 
     deepdep
@@ -49,7 +49,7 @@ this way you can set an inclue path for that bundle
 
 and here comes the fun part
 you can `.watch()` namespaces whether they are defined yet or not
-and this will prevent the execution of the loader script if not all of the are defined
+and this will prevent the execution of the loader script if not all of them are defined
 watched namespaces will be added to the loaders argument list so you can reference them
 
 you don't have to write window, but it's the default namespace root as of now
