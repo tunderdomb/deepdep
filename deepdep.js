@@ -161,7 +161,7 @@
     },
     include: function(){
       this.bundles.push(new Bundle([].slice.call(arguments)))
-      this.length += arguments.length
+      ++this.length
       return this
     }
   }
