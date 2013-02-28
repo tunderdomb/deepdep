@@ -17,19 +17,19 @@ supports native source inclusion.
 
 *Important Note:*
 deepdep bundles includes, and you can execute a bundle by calling `.loaded()`
-you have to call `.loaded()` if you want your scripts to loaded
+you have to call `.loaded()` if you want your scripts to be loaded
 
 the api is very simple
 
 you can `.include()` scripts like so
 
-    deepde.include("some.js", "/other.js", "../that-one.js").loaded(function(){
+    deepdep.include("some.js", "/other.js", "../that-one.js").loaded(function(){
       // .. all of them loaded and executed
     })
 
 or bundle includes
 
-    deepde
+    deepdep
       .include("some.js", "/other.js", "../that-one.js")
       .include("yet.js", "another.js", "../script.js")
       .loaded(function(){
@@ -40,7 +40,7 @@ this comes in handy when you want to tell the loader where to loade `.from()`
 this way you can set an inclue path for that bundle
 
 
-    deepde
+    deepdep
       .include("some.js", "/other.js", "../that-one.js")
       .include("yet.js", "another.js", "../script.js").from("this/path")
       .loaded(function(){
@@ -54,7 +54,7 @@ watched namespaces will be added to the loaders argument list so you can referen
 
 you don't have to write window, but it's the default namespace root as of now
 
-    deepde
+    deepdep
       .include("some.js", "/other.js", "../that-one.js")
       .from("that/dir")
       .watch("window.some", "other", "thatOne")
@@ -86,7 +86,7 @@ and this, is namespacing:
         method: function(){}
       }
       window.module = module
-    })
+    }())
 
 so if you are concerned if setting a global value will result in not getting a gift from Santa,
 I can assure you you can still be a good boy and use globals in javascript.
