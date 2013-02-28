@@ -4,9 +4,10 @@ that addresses some problems I came across using other script loaders
 
 for example deeply nested dependencies.
 some loader solves this by loading every script and figuring out the right order to execute
+
 I find it counter intuitive. What's the point of having dynamically loading scripts if they
 will execute sequentially anyway.
-Some script loaders doesn't even care that you have nested dependencies, they will just load
+Others doesn't even care that you have nested dependencies, they will just load
 async everything in order you required them.
 
 With deepdep, you can build applications intuitively like in any environment that
@@ -14,25 +15,40 @@ supports native source inclusion.
 
 ## How does this work, then?
 
+*Important Note:*
+deepdep bundles includes, and you can execute a bundle by calling `.loaded()`
+you have to call `.loaded()` if you want your scripts to loaded
+
 the api is very simple
 
-you can include scripts like so
+you can `.include()` scripts like so
 
     deepde.include("some.js", "/other.js", "../that-one.js").loaded(function(){
       // .. all of them loaded and executed
     })
 
-include a bunch from a specified directory
-note that absolute paths will not get prepended with the provided path
+or bundle includes
 
     deepde
-      .include("some.js", "/other.js", "../that-one.js").from("that/dir")
+      .include("some.js", "/other.js", "../that-one.js")
+      .include("yet.js", "another.js", "../script.js")
       .loaded(function(){
-      // .. all of them loaded and executed
-    })
+        // .. all of them loaded and executed
+      })
+
+this comes in handy when you want to tell the loader where to loade `.from()`
+this way you can set an inclue path for that bundle
+
+
+    deepde
+      .include("some.js", "/other.js", "../that-one.js")
+      .include("yet.js", "another.js", "../script.js").from("this/path")
+      .loaded(function(){
+        // .. all of them loaded and executed
+      })
 
 and here comes the fun part
-you can watch namespaces whether they are defined yet or not
+you can `.watch()` namespaces whether they are defined yet or not
 and this will prevent the execution of the loader script if not all of the are defined
 watched namespaces will be added to the loaders argument list so you can reference them
 
