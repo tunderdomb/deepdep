@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="../deepdep.js"></script>
+  <script type="text/javascript">
+    deepdep
+      .include("this.js", "that.js").from("some/nested").watch("window.dis", "window.dat")
+      .include("some.js", "other.js").from("elsewhere").watch("window.some")
+      .loaded(function( di, da, so ){
+        console.log("entry point loaded")
+        console.log(di)
+        console.log(da)
+        console.log(so)
+      })
+  </script>
+</head>
+<body>
+
+</body>
+</html>
