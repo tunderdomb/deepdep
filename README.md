@@ -15,9 +15,12 @@ supports native source inclusion.
 
 ## How does this work, then?
 
-*Important Note:*
+**Important Note:**
 deepdep bundles includes, and you can execute a bundle by calling `.loaded()`
 you have to call `.loaded()` if you want your scripts to be loaded
+
+`.loaded()` returns the deepdep function, so you can start with a new loading session
+right away
 
 the api is very simple
 
@@ -36,13 +39,16 @@ or bundle includes
         // .. all of them loaded and executed
       })
 
-this comes in handy when you want to tell the loader where to loaed `.from()`
+this comes in handy when you want to tell the loader where to load `.from()`
+different bundles
 this way you can set an include path for that bundle
 
-
     deepdep
-      .include("some.js", "/other.js", "../that-one.js")
-      .include("yet.js", "another.js", "../script.js").from("this/path")
+      // this/path/some.js
+      // /other.js
+      // this/that-one.js
+      .include("some.js", "/other.js", "../that-one.js").from("this/path")
+      .include("yet.js", "/another.js", "../script.js")
       .loaded(function(){
         // .. all of them loaded and executed
       })
@@ -63,8 +69,8 @@ you don't have to write window, but it's the default namespace root as of now
       .from("that/dir")
       .watch("window.some", "other", "thatOne")
       .loaded(function( some, other, thatOne){
-      // .. all of them loaded and executed
-    })
+        // .. all of them loaded and executed
+      })
 
 ## The catch
 

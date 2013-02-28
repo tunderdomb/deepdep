@@ -12,6 +12,7 @@
 
   function inject( src, notifyBundle, includePath ){
     var script
+    // is there a way to sort out ../ like paths..?
     src = makePath(src, includePath)
 
     if ( scripts[src] == 2 ) {
